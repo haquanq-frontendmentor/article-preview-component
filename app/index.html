@@ -12,7 +12,7 @@
   <body>
     <main class="main__container">
       <article class="article__card">
-        <img class="article__image" src="./assets/images/drawers.jpg" alt="Vintage wooden green drawers image" />
+        <img class="article__image" src="./assets/images/drawers.jpg" alt="Vintage green wooden drawers" />
         <div class="article__content">
           <h1 class="article__title">
             Shift the overall look and feel by adding these wonderful touches to furniture in your home
@@ -30,12 +30,13 @@
               />
               <div>
                 <p class="article-author__name">Michelle Appleton</p>
-                <p class="article-author__publish-date">28 Jun 2020</p>
+                <time class="article-author__publish-date" datetime="2020-6-28">28 Jun 2020</time>
               </div>
             </div>
             <div class="article-share__wrapper">
-              <button aria-label="Share menu" class="article-share__btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13">
+              <button class="article-share__btn" aria-expanded="false" aria-controls="share-menu">
+                <span class="sr-only" id="share-menu-btn-label">Share on social media</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" aria-hidden="true">
                   <path
                     fill="#6E8098"
                     d="M15 6.495L8.766.014V3.88H7.441C3.33 3.88 0 7.039 0 10.936v2.049l.589-.612C2.59 10.294 5.422 9.11 8.39 9.11h.375v3.867L15 6.495z"
@@ -44,10 +45,10 @@
               </button>
               <div class="article-share__content">
                 <span class="article-share__content--shape"></span>
-                <p class="article-share__label">Share</p>
-                <ul class="article-share__list">
+                <p class="article-share__label" aria-hidden="true">Share</p>
+                <ul class="article-share__list" id="share-menu" aria-describedby="share-menu-btn-label">
                   <li class="article-share__item">
-                    <a class="article-share__link" href="">
+                    <a class="article-share__link" href="" aria-label="Share on Facebook">
                       <img
                         class="article-share__link--icon"
                         src="./assets/images/icon-facebook.svg"
@@ -56,7 +57,7 @@
                     </a>
                   </li>
                   <li class="article-share__item">
-                    <a class="article-share__link" href="">
+                    <a class="article-share__link" href="" aria-label="Share on Twitter">
                       <img
                         class="article-share__link--icon"
                         src="./assets/images/icon-twitter.svg"
@@ -65,7 +66,7 @@
                     </a>
                   </li>
                   <li class="article-share__item">
-                    <a class="article-share__link" href="">
+                    <a class="article-share__link" href="" aria-label="Share on Pinterest">
                       <img
                         class="article-share__link--icon"
                         src="./assets/images/icon-pinterest.svg"
