@@ -1,7 +1,7 @@
 const shareMenu = {
-  vShape: document.querySelector(".card__share__content--shape"),
-  menuElement: document.querySelector(".card__share__content"),
-  toggleButton: document.querySelector(".card__share__btn"),
+  vShape: document.querySelector(".article-share__content--shape"),
+  menuElement: document.querySelector(".article-share__content"),
+  toggleButton: document.querySelector(".article-share__btn"),
   isShowing: false,
   showMenu() {
     requestAnimationFrame(() => {

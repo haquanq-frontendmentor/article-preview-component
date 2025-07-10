@@ -81,7 +81,7 @@ h6 {
     min-height: 100vh;
     padding: 4.75rem 0 5.0625rem 0;
 }
-.card {
+.article__card {
     margin: 0 auto;
     width: min(100vw - 3rem, 25rem);
     background-color: var(--clr-white);
@@ -89,48 +89,48 @@ h6 {
     border-radius: var(--rounded);
     box-shadow: hsla(217, 19%, 35%, 10%) 0px 16px 48px 8px;
 }
-.card__image {
+.article__image {
     width: 100%;
     max-height: 12.5rem;
     object-fit: cover;
     border-radius: var(--rounded) var(--rounded) 0 0;
 }
-.card__content {
+.article__content {
     position: relative;
     padding: 2.25rem 2rem 1.25rem 2rem;
 }
-.card__title {
+.article__title {
     font-size: var(--text-heading-1);
     line-height: var(--leading-heading-1);
     letter-spacing: var(--tracking-heading);
     color: var(--clr-blue-500);
     margin-bottom: 0.75rem;
 }
-.card__description {
+.article__description {
     line-height: var(--leading-paragprah);
     margin-bottom: 2rem;
 }
-.card__footer {
+.article__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.card__person {
+.article-author__wrapper {
     display: flex;
     align-items: center;
 }
-.card__person__avatar {
+.article-author__avatar {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: var(--rounded-full);
     margin-right: 1rem;
 }
-.card__person__name {
+.article-author__name {
     color: var(--clr-blue-500);
     font-weight: var(--font-bold);
     margin-bottom: 0.4375rem;
 }
-.card__share__content {
+.article-share__content {
     border-radius: var(--rounded);
     position: absolute;
     display: none;
@@ -144,14 +144,14 @@ h6 {
     transition: opacity 200ms ease;
     box-shadow: hsla(217, 19%, 35%, 10%) 0px 12px 24px 12px;
 }
-.card__share__label {
+.article-share__label {
     color: var(--clr-white);
     text-transform: uppercase;
     letter-spacing: 0.47em;
     font-size: 0.75rem;
     margin-right: 1.5rem;
 }
-.card__share__list {
+.article-share__list {
     position: relative;
     z-index: 999;
     list-style: none;
@@ -159,17 +159,17 @@ h6 {
     display: flex;
     gap: 1rem;
 }
-.card__share__item a {
+.article-share__item a {
     width: 1.25rem;
     height: 1.25rem;
     display: flex;
     align-items: center;
 }
-.card__share__item a:focus-visible {
+.article-share__item a:focus-visible {
     outline: 2px solid var(--clr-white);
     outline-offset: 4px;
 }
-.card__share__btn {
+.article-share__btn {
     position: relative;
     z-index: 999;
     width: 2rem;
@@ -185,30 +185,30 @@ h6 {
     transition-duration: 200ms;
     transition-timing-function: ease;
 }
-.card__share__btn.menu-shown {
+.article-share__btn.menu-shown {
     background-color: var(--clr-blue-300);
 }
-.card__share__btn.menu-shown svg path {
+.article-share__btn.menu-shown svg path {
     fill: var(--clr-blue-50);
 }
-.card__share__btn svg {
+.article-share__btn svg {
     pointer-events: none;
 }
-.card__share__btn svg path {
+.article-share__btn svg path {
     transition: fill 200ms ease;
 }
-.card__share__btn:focus-visible {
+.article-share__btn:focus-visible {
     outline: 2px dashed var(--clr-blue-500);
     outline-offset: 4px;
 }
-.card__share__btn:active {
+.article-share__btn:active {
     transform: scale(0.95);
 }
 @media (hover: hover) {
-    .card__share__btn:hover {
+    .article-share__btn:hover {
         background-color: var(--clr-blue-500);
     }
-    .card__share__btn:hover svg path {
+    .article-share__btn:hover svg path {
         fill: var(--clr-white);
     }
 }
@@ -221,33 +221,33 @@ h6 {
     .main__container {
         padding: 16.25rem 0;
     }
-    .card {
+    .article__card {
         width: min(100vw - 3rem, 45.625rem);
         display: flex;
     }
-    .card__content {
+    .article__content {
         padding: 2rem 2.5rem;
     }
-    .card__image {
+    .article__image {
         border-radius: var(--rounded) 0 0 var(--rounded);
         max-height: 100%;
         max-width: 17.8125rem;
         object-position: left;
     }
-    .card__description {
+    .article__description {
         margin-bottom: 1.25rem;
     }
-    .card__share {
+    .article-share {
         position: relative;
     }
-    .card__share__content {
+    .article-share__content {
         top: initial;
         left: initial;
         bottom: calc(100% + 1.75rem);
         right: 50%;
         transform: translateX(50%);
     }
-    .card__share__content--shape {
+    .article-share__content--shape {
         display: block;
         bottom: -0.5rem;
         position: absolute;
