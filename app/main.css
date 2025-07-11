@@ -19,37 +19,36 @@
             format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 :root {
-    --clr-blue-500: hsl(217, 19%, 35%);
-    --clr-blue-300: hsl(214, 17%, 51%);
-    --clr-blue-100: hsl(212, 23%, 69%);
-    --clr-blue-50: hsl(210, 46%, 95%);
-    --clr-white: #fff;
+    --color-blue-500: hsl(217, 19%, 35%);
+    --color-blue-300: hsl(214, 17%, 51%);
+    --color-blue-100: hsl(212, 23%, 69%);
+    --color-blue-50: hsl(210, 46%, 95%);
+    --color-white: #fff;
 
     --font-sans: Manrope, sans-serif;
     --font-medium: 500;
     --font-bold: 700;
 
-    --text-body: 0.8125rem;
-    --text-heading-1: 1rem;
+    --text-sm: 0.75rem;
+    --text-md: 1rem;
+    --text-lg: 1.25rem;
 
     --leading-none: 1;
-    --leading-heading-1: 1.5rem;
-    --leading-paragprah: 1.25rem;
+    --leading-1: 0.25rem;
+    --leading-5: 1.25rem;
+    --leading-6: 1.5rem;
+    --leading-7: 1.75rem;
 
-    --tracking-heading: 0.012em;
-    --tracking-main: 0.01em;
+    --tracking-loose: 0.01em;
 
     --rounded-full: 999px;
-    --rounded: 0.625rem;
+    --rounded-md: 0.625rem;
 }
 *,
 *::before,
 *::after {
     box-sizing: border-box;
     margin: 0;
-}
-body {
-    -webkit-font-smoothing: antialiased;
 }
 img,
 picture,
@@ -71,44 +70,61 @@ h5,
 h6 {
     overflow-wrap: break-word;
 }
-.main__container {
+body {
+    -webkit-font-smoothing: antialiased;
+    line-height: var(--leading-none);
+}
+.sr-only {
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+main {
     font-family: var(--font-sans);
     font-weight: var(--font-medium);
-    font-size: var(--text-body);
-    line-height: var(--leading-none);
     letter-spacing: var(--tracking-main);
-    background-color: var(--clr-blue-50);
+    background-color: var(--color-blue-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
-    padding: 4.75rem 0 5.0625rem 0;
+    padding: 1.5rem;
 }
 .article__card {
-    margin: 0 auto;
-    width: min(100vw - 3rem, 25rem);
-    background-color: var(--clr-white);
-    color: var(--clr-blue-300);
-    border-radius: var(--rounded);
+    width: 100%;
+    max-width: 25rem;
+    background-color: var(--color-white);
+    color: var(--color-blue-300);
+    border-radius: var(--rounded-md);
     box-shadow: hsla(217, 19%, 35%, 10%) 0px 16px 48px 8px;
 }
 .article__image {
     width: 100%;
     max-height: 12.5rem;
     object-fit: cover;
-    border-radius: var(--rounded) var(--rounded) 0 0;
+    border-radius: var(--rounded-md) var(--rounded-md) 0 0;
 }
 .article__content {
     position: relative;
-    padding: 2.25rem 2rem 1.25rem 2rem;
+    letter-spacing: var(--tracking-loose);
+    font-size: calc(var(--text-sm) + 1px);
+    padding-inline: clamp(2rem, 2.036vw + 1.523rem, 2.5rem);
+    padding-block: 2.25rem 1.25rem;
 }
 .article__title {
-    font-size: var(--text-heading-1);
-    line-height: var(--leading-heading-1);
-    letter-spacing: var(--tracking-heading);
-    color: var(--clr-blue-500);
+    color: var(--color-blue-500);
     margin-bottom: 0.75rem;
+    line-height: calc(1em + 0.5rem);
+    font-size: clamp(var(--text-md), 1.018vw + 0.761rem, var(--text-lg));
 }
 .article__description {
-    line-height: var(--leading-paragprah);
     margin-bottom: 2rem;
+    line-height: var(--leading-5);
 }
 .article__footer {
     display: flex;
@@ -126,26 +142,25 @@ h6 {
     margin-right: 1rem;
 }
 .article-author__name {
-    color: var(--clr-blue-500);
+    color: var(--color-blue-500);
     font-weight: var(--font-bold);
     margin-bottom: 0.4375rem;
 }
 .article-share__content {
-    border-radius: var(--rounded);
+    border-radius: var(--rounded-md);
     position: absolute;
     display: none;
     align-items: center;
-    justify-content: center;
     left: 0;
     right: 0;
-    top: calc(100% + 0.625rem);
-    padding: 1rem 2rem;
-    background-color: var(--clr-blue-500);
+    bottom: 0;
+    padding: 1.375rem 2rem;
+    background-color: var(--color-blue-500);
     transition: opacity 200ms ease;
     box-shadow: hsla(217, 19%, 35%, 10%) 0px 12px 24px 12px;
 }
 .article-share__label {
-    color: var(--clr-white);
+    color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: 0.47em;
     font-size: 0.75rem;
@@ -159,14 +174,14 @@ h6 {
     display: flex;
     gap: 1rem;
 }
-.article-share__item a {
+.article-share__link {
     width: 1.25rem;
     height: 1.25rem;
     display: flex;
     align-items: center;
 }
 .article-share__item a:focus-visible {
-    outline: 2px solid var(--clr-white);
+    outline: 2px dashed var(--color-white);
     outline-offset: 4px;
 }
 .article-share__btn {
@@ -177,19 +192,13 @@ h6 {
     padding: 0.5625rem 0 0.625rem 0;
     border: none;
     cursor: pointer;
-    background-color: var(--clr-blue-50);
+    background-color: var(--color-blue-50);
     border-radius: var(--rounded-full);
     display: flex;
     justify-content: center;
     transition-property: background-color, transform;
     transition-duration: 200ms;
     transition-timing-function: ease;
-}
-.article-share__btn.menu-shown {
-    background-color: var(--clr-blue-300);
-}
-.article-share__btn.menu-shown svg path {
-    fill: var(--clr-blue-50);
 }
 .article-share__btn svg {
     pointer-events: none;
@@ -198,38 +207,57 @@ h6 {
     transition: fill 200ms ease;
 }
 .article-share__btn:focus-visible {
-    outline: 2px dashed var(--clr-blue-500);
+    outline: 2px dashed var(--color-blue-500);
     outline-offset: 4px;
 }
 .article-share__btn:active {
     transform: scale(0.95);
 }
-@media (hover: hover) {
-    .article-share__btn:hover {
-        background-color: var(--clr-blue-500);
+.article-share__btn[aria-expanded="true"] {
+    background-color: var(--color-blue-300);
+    transform: translateY(8px);
+}
+.article-share__btn[aria-expanded="true"] svg path {
+    fill: var(--color-blue-50);
+}
+.article-share__btn[aria-expanded="true"] + .article-share__content {
+    display: flex;
+}
+@media (prefers-reduced-motion) {
+    .article-share__content {
+        transition: none;
     }
-    .article-share__btn:hover svg path {
-        fill: var(--clr-white);
+    .article-share__btn {
+        transition: none;
+    }
+    .article-share__btn svg path {
+        transition: none;
     }
 }
-
+@media (hover: hover) {
+    .article-share__btn:hover {
+        background-color: var(--color-blue-500);
+    }
+    .article-share__btn[aria-expanded="true"]:hover {
+        background-color: var(--color-blue-50);
+    }
+    .article-share__btn:hover svg path {
+        fill: var(--color-white);
+    }
+    .article-share__btn[aria-expanded="true"]:hover svg path {
+        fill: var(--color-blue-500);
+    }
+}
 @media screen and (min-width: 42em) {
-    :root {
-        --text-heading-1: 1.25rem;
-        --leading-heading-1: 1.75rem;
-    }
-    .main__container {
-        padding: 16.25rem 0;
-    }
     .article__card {
-        width: min(100vw - 3rem, 45.625rem);
+        max-width: 45.625rem;
         display: flex;
     }
     .article__content {
-        padding: 2rem 2.5rem;
+        padding-block: 2rem;
     }
     .article__image {
-        border-radius: var(--rounded) 0 0 var(--rounded);
+        border-radius: var(--rounded-md) 0 0 var(--rounded-md);
         max-height: 100%;
         max-width: 17.8125rem;
         object-position: left;
@@ -237,7 +265,7 @@ h6 {
     .article__description {
         margin-bottom: 1.25rem;
     }
-    .article-share {
+    .article-share__wrapper {
         position: relative;
     }
     .article-share__content {
@@ -255,16 +283,9 @@ h6 {
         height: 1.25rem;
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
-        background-color: var(--clr-blue-500);
+        background-color: var(--color-blue-500);
     }
-}
-.sr-only {
-    position: absolute;
-    width: 0.1rem;
-    height: 0.1rem;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+    .article-share__btn[aria-expanded="true"] {
+        transform: none;
+    }
 }

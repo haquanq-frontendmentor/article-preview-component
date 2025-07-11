@@ -1,85 +1,68 @@
-const shareMenu = {
-  vShape: document.querySelector(".article-share__content--shape"),
-  menuElement: document.querySelector(".article-share__content"),
-  toggleButton: document.querySelector(".article-share__btn"),
-  isShowing: false,
-  showMenu() {
+const vShape = document.querySelector(".article-share__content--shape");
+const menuContent = document.querySelector(".article-share__content");
+const menuButton = document.querySelector(".article-share__btn");
+
+const isMenuExpanded = () => menuButton.getAttribute("aria-expanded") === "true";
+
+const showMenu = () => {
+    menuButton.setAttribute("aria-expanded", "true");
     requestAnimationFrame(() => {
-      this.menuElement.style.display = "flex";
-      this.menuElement.style.opacity = "0";
-      this.toggleButton.classList.add("menu-shown");
+        menuContent.style.display = "flex";
+        menuContent.style.opacity = "0";
+        menuButton.classList.add("menu-shown");
 
-      const rect = this.menuElement.getBoundingClientRect();
-      let offsetX = outerWidth - (rect.width + rect.left);
-      if (offsetX < 0) {
-        const x = Math.min(Math.abs(offsetX) + 24);
-        this.menuElement.style.margin = `0 ${x}px 0 0`;
-        this.vShape.style.margin = `0 0 0 ${x}px`;
-      }
+        const rect = menuContent.getBoundingClientRect();
+        let offsetX = outerWidth - (rect.width + rect.left);
+        if (offsetX < 0) {
+            const x = Math.min(Math.abs(offsetX) + 24);
+            menuContent.style.margin = `0 ${x}px 0 0`;
+            vShape.style.margin = `0 0 0 ${x}px`;
+        }
 
-      requestAnimationFrame(() => {
-        this.vShape.style.opacity = null;
-        this.menuElement.style.opacity = null;
-      });
-    });
-  },
-
-  hideMenu() {
-    let startTime = null;
-
-    function resetStyling(t) {
-      if (!startTime) {
-        shareMenu.menuElement.style.opacity = "0";
-        shareMenu.toggleButton.classList.remove("menu-shown");
-        startTime = t;
-      }
-
-      if (t - startTime < 200) {
-        requestAnimationFrame(resetStyling);
-      } else {
         requestAnimationFrame(() => {
-          shareMenu.menuElement.style.margin = null;
-          shareMenu.menuElement.style.display = null;
-          shareMenu.vShape.style.margin = null;
+            vShape.style.opacity = null;
+            menuContent.style.opacity = null;
         });
-      }
-    }
-    requestAnimationFrame(resetStyling);
-  },
-
-  toggleMenu() {
-    if (this.isShowing) {
-      this.hideMenu();
-      this.isShowing = false;
-    } else {
-      this.showMenu();
-      this.isShowing = true;
-    }
-  },
-  init() {
-    this.toggleButton.addEventListener("click", (e) => {
-      e.stopPropagation();
-      this.toggleMenu();
     });
-
-    this.menuElement.addEventListener("click", (e) => {
-      e.stopPropagation();
-    });
-
-    document.addEventListener("click", (e) => {
-      if (this.isShowing) {
-        this.hideMenu();
-        this.isShowing = false;
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      if (this.isShowing) {
-        this.hideMenu();
-        this.isShowing = false;
-      }
-    });
-  },
 };
 
-shareMenu.init();
+const hideMenu = () => {
+    let startTime = null;
+    menuButton.setAttribute("aria-expanded", "false");
+
+    function resetStyling(t) {
+        if (!startTime) {
+            menuContent.style.opacity = "0";
+            menuButton.classList.remove("menu-shown");
+            startTime = t;
+        }
+
+        if (t - startTime < 200) {
+            requestAnimationFrame(resetStyling);
+        } else {
+            requestAnimationFrame(() => {
+                menuContent.style.margin = null;
+                menuContent.style.display = null;
+                vShape.style.margin = null;
+            });
+        }
+    }
+    requestAnimationFrame(resetStyling);
+};
+
+menuButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (isMenuExpanded()) hideMenu();
+    else showMenu();
+});
+
+menuContent.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
+
+document.addEventListener("click", (e) => {
+    if (isMenuExpanded()) hideMenu();
+});
+window.addEventListener("blur", () => {
+    if (isMenuExpanded()) hideMenu();
+});
