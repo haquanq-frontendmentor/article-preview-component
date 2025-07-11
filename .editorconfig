@@ -1,5 +1,5 @@
 [*]
 max_line_length = 120
 
-[*.css]
+[*.{css,js}]
 indent_size = 4
