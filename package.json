@@ -1,6 +1,6 @@
 {
-  "name": "fm-social-links-profile",
-  "description": "Solution for frontendmentor.io challenge: social-links-profile",
+  "name": "article-preview-component",
+  "description": "Solution for frontendmentor.io challenge: article-preview-component",
   "devDependencies": {
     "browser-sync": "^3.0.2"
   },
